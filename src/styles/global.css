@@ -1,0 +1,532 @@
+/* index.css */
+
+*:before, *:after {
+  z-index: -1;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Navbar tabs and links */
+.navbar-nav a:hover{
+  background-color: white; 
+  color: black !important; 
+  text-decoration: none !important; 
+  border-radius: 5px 10px !important; 
+}
+
+.navbar-nav .active a {
+  background-color: #682772; 
+  color: white; 
+  padding: 10px; 
+  margin: 10px;
+  border-radius: 10px 5px !important; 
+}
+
+.navbar-nav .inactive a {
+  color: white; 
+  padding: 10px; 
+  margin: 10px;
+  border-radius: 5px 10px !important; 
+}
+
+.nav-item {
+  color: black !important; 
+  border-radius: 5px 10px !important; 
+}
+
+.nav-item:hover {
+  background-color: gray !important; 
+  border-radius: 10px 5px !important; 
+}
+
+a[aria-selected="true"] {
+  color: white !important; 
+  background-color: #682772 !important; 
+  border-radius: 10px 5px !important; 
+}
+
+h1 {
+  font-size: 1.75em !important; 
+  color: white; 
+}
+
+/* Cell status styling */ 
+.success {
+  background-color: green; 
+  color: white; 
+  border: 1px solid white !important; 
+}
+
+.failure {
+  background-color: firebrick; 
+  color: white; 
+  border: 1px solid white !important; 
+}
+
+.not-run {
+  background-color: dimgray; 
+  color: white; 
+  border: 1px solid white !important; 
+}
+
+.in-progress {
+  background-color: yellow; 
+  color: black; 
+  border: 1px solid white !important; 
+}
+
+/* API Grid CSS */ 
+
+#myGrid {
+  /* flex: 1 1 auto; */
+  flex: 1 1 auto;
+  height: calc(100vh - 150px);
+}
+
+.ag-body-viewport-wrapper.ag-layout-normal {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+/* Footer */
+
+.footer {
+  background-color: black; 
+  position: fixed !important; 
+  bottom: 0; 
+  left: 0; 
+  flex: none;
+  height: 75px; 
+  width: 100%; 
+}
+
+/* Refresh Spinner, used for manual table refreshes */
+
+.refresh-spinner {
+  transform-origin:50% 50%;
+  animation: spin 2s infinite linear;
+  
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin:50% 50%; 
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+.ag-theme-alpine .ag-header-cell-label {
+  text-transform: uppercase;
+}
+
+.refreshButton:focus, .refreshButton:hover {
+  box-shadow: 0px 0px 0px 2px white !important;
+}
+
+/* svg color change */
+
+.make-svg-white{
+fill: white;
+}
+
+.rotate{
+  transition: all .3s linear;
+}
+
+.rotate.down{
+  transform:rotate(180deg);
+}
+
+
+/* Autorefresh Slider */ 
+
+.slider-handle {
+  background-image: none !important;
+  background-color: #682772 !important;
+  border: 1px solid white !important; 
+}
+
+.slider-selection.tick-slider-selection {
+  background-image: none !important; 
+  background-color: #4c1c53 !important; 
+}
+
+.slider-tick.round.in-selection {
+  background-image: none !important; 
+  background-color:  #682772 !important;
+}
+
+.slider-tick.round {
+  background-image: none !important; 
+  background-color: white; 
+  opacity: 1; 
+}
+
+.refreshText {
+color: white; 
+font-size: 30px; 
+padding-right: 296px;  
+}
+
+/* New Navbar 7/13 */
+
+.btn-light, .btn-light:active, .btn-light:visited {
+background-color: rgb(248, 248, 248) !important;
+}
+
+.btn-dark, .btn-dark:active, .btn-dark:visited {
+background-color: rgb(103, 39, 117) !important;
+}
+
+.btn-light:hover, .btn-light:focus {
+background-color: white !important; 
+color: #682772 !important; 
+box-shadow: 0px 0px 0px 2px #B149C1 !important;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  box-shadow: 0 0 0 2px white !important; 
+}
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+background-color: black !important; 
+flex: none; 
+}
+
+button.resize.btn.btn-primary {
+color: white !important; 
+background-color: #682772 !important; 
+margin-right: 10px; 
+border: none !important;
+}
+
+button.resize.btn.btn-primary:focus {
+box-shadow: 0 0 0 0.1rem white !important;
+}
+
+/* Grid Tooltip */
+
+.custom-tooltip {
+  position: absolute;
+  border: 1px solid #682772;
+  overflow-wrap: normal;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+
+.custom-tooltip.ag-tooltip-hiding {
+  opacity: 0;
+}
+
+.custom-tooltip p {
+  margin: 5px;
+  white-space: nowrap;
+}
+
+.custom-tooltip p:first-of-type {
+  font-weight: bold;
+}
+
+/* Settings */
+
+.ml-4 {
+  margin-top: 20px; 
+}
+
+.tableName, .tableName h1 { 
+  display: inline;
+}
+
+select#dropdown {
+  margin-top: -5px; 
+}
+#bg-nested-dropdown{
+  background-color: #682772; 
+  color: white; 
+  border: 0 !important; 
+}
+
+#bg-nested-dropdown:focus {
+  box-shadow: 0 0 0 0.1rem white; 
+}
+
+.hoursText {
+  color: white; 
+  font-size: 30px; 
+  padding-right: 50px; 
+  width: 470px; 
+  }
+
+.btn-secondary {
+margin-left: 40px; 
+padding-top: 8px !important; 
+position: relative; 
+}
+
+.slider .bs-tooltip-top .tooltip-inner,
+.slider .bs-tooltip-bottom .tooltip-inner {
+  background-color: white !important; 
+  color: black !important; 
+}
+
+.slider.bs-tooltip-left .tooltip-inner, .slider.bs-tooltip-right .tooltip-inner {
+  position: relative;
+  top: -100%;
+}
+
+.timetext {
+color: white !important; 
+font-size: 24px !important; 
+}
+
+.dropdown-item {
+  background-color: black !important;
+  color: white !important;  
+}
+
+.dropdown-menu.show {
+  background-color: black !important; 
+  border: 2px solid #682772 !important; 
+  width: 450px !important; 
+}
+
+.dropdown-menu.show.dropdown-item {
+  display: flex !important; 
+  justify-content: center; 
+}
+
+button#dropdown-item-button {
+  /* padding-left: 60px; 
+  padding-right: 60px;  */
+  padding: 0px 35px 0px 35px !important; 
+  background-color: #682772; 
+  border: 0px;
+  height: 38px; 
+}
+
+button#dropdown-item-button:focus {
+  box-shadow: 0 0 0 2px white;
+}
+
+.resize {
+  margin-right: 10px; 
+  background-color: #682772 !important; 
+  color: white !important; 
+}
+
+[role|="button"]:nth-of-type(3){
+  display: flex !important; 
+  justify-content: center; 
+}
+
+/* Loading icon */
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: 3px;
+  border: 3px solid black;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #6793c0 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/* Save Icon */
+/* Save Icon */
+.saveIcon {
+  transition: opacity 1s;
+  font-size: 14pt !important; 
+  color: dimgray; 
+  text-align: right !important; 
+  width: 160px;
+  height: 30px;
+  margin-top: 5px;
+}
+
+/* Settings Modal */ 
+.settings-modal .modal-content {
+  background-color: black; 
+  color: white; 
+}
+
+.settings-modal .modal-title {
+  font-size: 2.3rem; 
+}
+
+button.btn.btn-primary.btn-dark.settings-button {
+  padding-left: 60px;
+  padding-right: 60px; 
+}
+
+.format-buttons.row {
+  display: flex; 
+  align-items: center;
+  justify-content: center; 
+}
+
+hr {
+  border-top: 1px solid rgba(255, 255, 255, .8) !important;
+}
+
+.close {
+  color: white !important; 
+}
+
+
+/* NavBox */
+
+
+a {
+  text-decoration: none;
+}
+.navBox-btn {
+  text-decoration: none;
+  text-align: center;
+  line-height: 60px;
+  width: 100%;
+  color: black;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: auto;
+  border-bottom: 3px solid black;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.navBox a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #000000;
+  transform: translateX(-100%);
+}
+.navBox a:hover {
+  color: rgb(63, 19, 83);
+  text-decoration: none;
+}
+.navBox a:hover:before {
+  transform: translateX(0);
+  transition: 0.5s ease-in-out;
+
+}
+#img-home {
+
+  position: absolute;
+  bottom:116px;
+  right:0px;
+
+  border-radius: 20px 20px 0px 0px;
+}
+#img-code {
+  border-radius: 0px 0px 20px 20px;
+}
+
+.navBox {
+	position: fixed;
+	right: 25px;
+  top:50%;
+  height:120px;
+  font-size: 1.2em;
+  width:12%;
+}
+.navBox img {
+  width: 100%;
+  transition: 0.5s ease-in-out;
+
+  display: block;
+  margin: auto;
+}
+
+@media (max-width: 991px) {
+  .navBox {
+    width:20%;
+  }
+  .navBox-btn {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .navBox a:hover {
+    color: black;
+  }
+}
