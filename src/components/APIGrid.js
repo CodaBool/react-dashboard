@@ -11,12 +11,7 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import CustomTooltip from "./CustomTooltip";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/action";
-import { data as clAdvance } from "../data/clone-advance"
-import { data as clAdvise } from "../data/clone-advise"
-import { data as clRecruit } from "../data/clone-recruit"
-import { data as upAdvance } from "../data/upgrade-advance"
-import { data as upAdvise } from "../data/upgrade-advise"
-import { data as upRecruit } from "../data/upgrade-recruit"
+import { clAdv, clAds, clRec, upAdv, upAds, upRec, columnDefs } from '../data/sample'
 
 const WAIT_INTERVAL = 1000; // how long between
 var gridReady = false; // initial state of not ready
@@ -24,141 +19,44 @@ var gridColumnApi, gridApi, timer, format = null
 var pinWidth = 150
 
 function chooseColumns(table) {
+  console.log('runnning setRowData with',table)
   switch (table) {
     case "cl-advance":
-      return clAdvance;
+      return clAdv;
     case "cl-advise":
-      return clAdvise;
+      return clAds;
     case "cl-recruit":
-      return clRecruit;
+      return clRec;
     case "up-advance":
-      return upAdvance;
+      return upAdv;
     case "up-advise":
-      return upAdvise;
+      return upAds;
     case "up-recruit":
-      return upRecruit;
+      return upRec;
     default:
-      return clAdvance;
+      return clAdv;
   }
 }
 
-function setColorClass(value) {
-  if (value === "Success") {
-    return "success";
-  } else if (value === "Failure") {
-    return "failure";
-  } else if (value === "In progress") {
-    return "in-progress";
-  }
-  return "other";
-}
 
-var columnDefs = [
-  {headerName: "Client", field: "Client", pinned: "left", width: 100},
-  {headerName: "Job", field: "Job", pinned: "left", width: 70},
-  {headerName: "SmokeTest", field: "SmokeTest",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "PreCore", field: "PreCore",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "BkeField", field: "BkeField",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "BkSrcDB", field: "BkSrcDB",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "BkTrgDb", field: "BkTrgDb",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "BkEnt", field: "BkEnt",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "ResDB", field: "ResDB",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "ImpOrg", field: "ImpOrg",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "ImpEnt", field: "ImpEnt",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "Resek", field: "Resek",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "RD_END", field: "RD_END",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "RD_Start", field: "RD_Start",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "WFE", field: "WFE",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "TS", field: "TS",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "ST", field: "ST",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "XCAS", field: "XCAS",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-  {headerName: "SUP", field: "SUP",
-    cellClass: function(params) {
-      return setColorClass(params.value)
-    }},
-]
 
-// specify the data
-var rowData = [
-  {Client: "US-East", Job: "201", SmokeTest: "Failure", PreCore: "Success", BkeField: "Success", BkSrcDB: "Success", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "Failure", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "US-West", Job: "201", SmokeTest: "Failure", PreCore: "Success", BkeField: "In progress", BkSrcDB: "Success", BkTrgDb: "Failure", BkEnt: "Failure", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "Success", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Failure", SUP: "Success"},
-  {Client: "US-Central", Job: "201", SmokeTest: "Success", PreCore: "Failure", BkeField: "Success", BkSrcDB: "Success", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "In progress", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "FR", Job: "201", SmokeTest: "Failure", PreCore: "Success", BkeField: "Success", BkSrcDB: "Success", BkTrgDb: "In progress", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "Success", WFE: "Failure", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "IT", Job: "201", SmokeTest: "Success", PreCore: "Failure", BkeField: "In progress", BkSrcDB: "Success", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Failure", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Failure", RD_Start: "Success", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "DE", Job: "201", SmokeTest: "In progress", PreCore: "In progress", BkeField: "Success", BkSrcDB: "Failure", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Failure", RD_END: "Success", RD_Start: "Success", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Failure", SUP: "Success"},
-  {Client: "PO", Job: "201", SmokeTest: "Success", PreCore: "Success", BkeField: "Success", BkSrcDB: "Failure", BkTrgDb: "In progress", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Failure", RD_Start: "Failure", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "UK", Job: "201", SmokeTest: "Success", PreCore: "Success", BkeField: "Success", BkSrcDB: "Success", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "Success", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "LV", Job: "201", SmokeTest: "Success", PreCore: "Success", BkeField: "Success", BkSrcDB: "In progress", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Failure", Resek: "Success", RD_END: "Success", RD_Start: "Success", WFE: "Success", TS: "Failure", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "PT", Job: "201", SmokeTest: "In progress", PreCore: "Failure", BkeField: "Success", BkSrcDB: "Success", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "Success", WFE: "Failure", TS: "Success", ST: "Success", XCAS: "Failure", SUP: "Success"},
-  {Client: "SK", Job: "201", SmokeTest: "Failure", PreCore: "Success", BkeField: "Success", BkSrcDB: "Failure", BkTrgDb: "Success", BkEnt: "In progress", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Failure", RD_Start: "Success", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"},
-  {Client: "RO", Job: "201", SmokeTest: "Success", PreCore: "Success", BkeField: "Success", BkSrcDB: "Success", BkTrgDb: "Success", BkEnt: "Success", ResDB: "Success", ImpOrg: "Success",  ImpEnt: "Success", Resek: "Success", RD_END: "Success", RD_Start: "Failure", WFE: "Success", TS: "Success", ST: "Success", XCAS: "Success", SUP: "Success"}
-]
+// resizes the columns to match the headers
+export const resizeAuto = () => {
+  // only works on columns which are visible
+  // to resize all columns, the suppressColumnVirtualisation must be set to true, possible performance hit
+  format = 'auto'
+  var allColumnIds = [];
+  gridColumnApi.getAllColumns().forEach(function (column) {
+    allColumnIds.push(column.colId);
+  });
+  gridColumnApi.autoSizeColumns(allColumnIds, false); // false to consider headers, true to not
+};
 
-  // resizes the columns to match the headers
-  export const resizeAuto = () => {
-    // only works on columns which are visible
-    // to resize all columns, the suppressColumnVirtualisation must be set to true, possible performance hit
-    format = 'auto'
-    var allColumnIds = [];
-    gridColumnApi.getAllColumns().forEach(function (column) {
-      allColumnIds.push(column.colId);
-    });
-    gridColumnApi.autoSizeColumns(allColumnIds, false); // false to consider headers, true to not
-  };
-
-  // resize columns to fit on screen
-  export const resizeToFit = () => {
-    format = 'fit'
-    gridApi.sizeColumnsToFit();
-  };
+// resize columns to fit on screen
+export const resizeToFit = () => {
+  format = 'fit'
+  gridApi.sizeColumnsToFit();
+};
 
 
 /* APIGrid component takes in redux states as props
@@ -213,6 +111,7 @@ const APIGrid = (props) => {
     if (gridReady) {
       if (format === 'fit') {
         resizeToFit()
+        // reload table
       } else if (format === 'auto') {
         resizeAuto()
       }
@@ -257,7 +156,7 @@ const APIGrid = (props) => {
         >
           <AgGridReact
             columnDefs={columnDefs}
-            rowData={rowData}
+            rowData={chooseColumns(table)}
             defaultColDef={defaultColDef}
             onGridReady={onGridReady}
             frameworkComponents={frameworkComponents}

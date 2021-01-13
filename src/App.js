@@ -4,6 +4,7 @@ import APIGrid from './components/APIGrid'
 import NavigationBar from './components/NavigationBar'
 import Footer from './components/Footer'
 import NavBox from './components/NavBox'
+import SampleFooter from './components/SampleFooter'
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <NavigationBar />
       <APIGrid />
       <NavBox />
-      <Footer />
+      <SampleFooter />
     </>
   )
 }

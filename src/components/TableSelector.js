@@ -99,7 +99,7 @@ function TableSelector({ table, changeTable, changeSaving }) {
     }
   }
 
-  useEffect(() => { // TODO: consider setting cookie on an interval rather than each click
+  useEffect(() => {
     console.log("============ Table change to", table, " ============")
     switch(table.substring(0, 2)) {
       case "cl": handleClick(null, clone); break
